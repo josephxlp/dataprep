@@ -7,16 +7,6 @@ from .rfilter import dem_remove_badpixels
 from glob import glob 
 
 
-# from .rfilter import (classify_lwm_CopWBM, classify_lwm_CopWBM, classify_lwm_TanDEMX_LCM,
-#                      filter_tandemx_noise,filter_water,combine_water_masks,classify_lwm_ESAWC)
-
-
-
-
-# vars = (tdem_dem_fpath,tdem_hem_fpath,tdem_wam_fpath,cdem_wbm_fpath,cdem_wbm_fpath,
-#             dtm_fpath,pdem_fpath,edem_egm_fpath,edem_wgs_fpath,edem_lcm_fpath,
-#             esawc_fpath,etchm_fpath,etchm_fpath,egm08_fpath,s1_fpath,s2_fpath)
-
 def retile_datasets(
     ds_tiles_dpath, tilename, xmin, ymin, xmax, ymax, xres, yres,
     tdem_dem_fpath, tdem_hem_fpath, tdem_wam_fpath, cdem_wbm_fpath,
