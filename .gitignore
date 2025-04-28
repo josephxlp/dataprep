@@ -1,4 +1,7 @@
 # Notebook and Models 
+*.joblib 
+*.pikcle 
+*.pkl 
 *.tif 
 *.vrt 
 
