@@ -1,4 +1,7 @@
 # Notebook and Models 
+*.tif 
+*.vrt 
+
 dspaths.py 
 x.py 
 *__pycache__
@@ -8,12 +11,10 @@ znotes
 
 uvars.py 
 ATaskx
-=======
 *uvars.py 
 ATaskx
 catboost_info 
 __pycache__/*
->>>>>>> utils
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
