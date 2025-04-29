@@ -7,6 +7,11 @@ from .rfilter import dem_remove_badpixels
 from glob import glob 
 
 
+
+# vars = (tdem_dem_fpath,tdem_hem_fpath,tdem_wam_fpath,cdem_wbm_fpath,cdem_wbm_fpath,
+#             dtm_fpath,pdem_fpath,edem_egm_fpath,edem_wgs_fpath,edem_lcm_fpath,
+#             esawc_fpath,etchm_fpath,etchm_fpath,egm08_fpath,s1_fpath,s2_fpath)
+
 def retile_datasets(
     ds_tiles_dpath, tilename, xmin, ymin, xmax, ymax, xres, yres,
     tdem_dem_fpath, tdem_hem_fpath, tdem_wam_fpath, cdem_wbm_fpath,

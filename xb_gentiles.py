@@ -5,7 +5,6 @@ from config.uvars import brchieve_dpath12, vars_name_path_fn,files_byvariable_fn
 from dataprep.wb_tiles import process_tile
 from dataprep.rutils import read_yaml
 
-
 if __name__ == "__main__":
     ti = time.perf_counter()
     bpaths = read_yaml(files_byvariable_fn) 
@@ -84,10 +83,8 @@ if __name__ == "__main__":
     print(f'run.time: {tf/60} min(s)')
     
 
-
-    
-
 # add a logger here 
+
     
 
 

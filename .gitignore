@@ -5,6 +5,7 @@
 *.tif 
 *.vrt 
 
+
 dspaths.py 
 x.py 
 *__pycache__
@@ -14,6 +15,7 @@ znotes
 
 uvars.py 
 ATaskx
+
 *uvars.py 
 ATaskx
 catboost_info 
