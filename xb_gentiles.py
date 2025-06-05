@@ -20,7 +20,6 @@ if __name__ == "__main__":
     tdem_wam_fpath = gpaths["tdem_wam"]  
     tdem_com_fpath = gpaths["tdem_com"]
     
-
     dtm_fpath = gpaths["ldem"] # fix lidar in VRT
     #dsm_fpath = gpaths['multi_DSM_LiDAR']
     pdem_fpath = gpaths["pdem"]

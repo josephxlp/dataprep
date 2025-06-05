@@ -3,7 +3,7 @@ import subprocess
 from glob import glob
 import time 
 import yaml 
-from os.path import join,isfile, exists
+from os.path import join,isfile
 
 
 def create_text_file(key, files, output_dir, overwrite=False):
@@ -53,22 +53,22 @@ def loadfiles_byvariable(archieve_dpath, outdir):
     os.makedirs(outdir, exist_ok=True)
     ti = time.perf_counter()
     ds = {}
-    ds["tdem_dem"] = glob(f"{archieve_dpath}/TDEMX/*/DEM/*_DEM.tif")
-    ds["tdem_wam"] = glob(f"{archieve_dpath}/TDEMX/*/AUXFILES/*WAM.tif")
-    ds["tdem_lsm"] = glob(f"{archieve_dpath}/TDEMX/*/AUXFILES/*LSM.tif")
-    ds["tdem_hem"] = glob(f"{archieve_dpath}/TDEMX/*/AUXFILES/*HEM.tif")
-    ds["tdem_cov"] = glob(f"{archieve_dpath}/TDEMX/*/AUXFILES/*COV.tif")
-    ds["tdem_com"] = glob(f"{archieve_dpath}/TDEMX/*/AUXFILES/*COM.tif")
+    ds["tdem_dem"] = glob(f"{archieve_dpath}/DEMsProducts/TDEMX/*/DEM/*_DEM.tif")
+    ds["tdem_wam"] = glob(f"{archieve_dpath}/DEMsProducts/TDEMX/*/AUXFILES/*WAM.tif")
+    ds["tdem_lsm"] = glob(f"{archieve_dpath}/DEMsProducts/TDEMX/*/AUXFILES/*LSM.tif")
+    ds["tdem_hem"] = glob(f"{archieve_dpath}/DEMsProducts/TDEMX/*/AUXFILES/*HEM.tif")
+    ds["tdem_cov"] = glob(f"{archieve_dpath}/DEMsProducts/TDEMX/*/AUXFILES/*COV.tif")
+    ds["tdem_com"] = glob(f"{archieve_dpath}/DEMsProducts/TDEMX/*/AUXFILES/*COM.tif")
     print_file_length(ds,"tdem_dem")
     print_file_length(ds,"tdem_wam")
     print_file_length(ds,"tdem_hem")
     print_file_length(ds,"tdem_cov")
     print_file_length(ds,"tdem_com")
-    ds["edem_wgs"] = glob(f"{archieve_dpath}/EDEMx/TILES/comprexn/*/EDEM/*_EDEM_W84.tif")
-    ds["edem_egm"] = glob(f"{archieve_dpath}/EDEMx/TILES/comprexn/*/EDEM/*_EDEM_EGM.tif")
-    ds["edem_lcm"] = glob(f"{archieve_dpath}/EDEMx/TILES/comprexn/*/EDEM_AUXFILES/*LCM.tif")
-    ds["edem_hem"] = glob(f"{archieve_dpath}/EDEMx/TILES/comprexn/*/EDEM_AUXFILES/*HEM.tif")
-    ds["edem_edm"] = glob(f"{archieve_dpath}/EDEMx/TILES/comprexn/*/EDEM_AUXFILES/*EDM.tif")
+    ds["edem_wgs"] = glob(f"{archieve_dpath}/DEMsProducts/EDEMx/TILES/comprexn/*/EDEM/*_EDEM_W84.tif")
+    ds["edem_egm"] = glob(f"{archieve_dpath}/DEMsProducts/EDEMx/TILES/comprexn/*/EDEM/*_EDEM_EGM.tif")
+    ds["edem_lcm"] = glob(f"{archieve_dpath}/DEMsProducts/EDEMx/TILES/comprexn/*/EDEM_AUXFILES/*LCM.tif")
+    ds["edem_hem"] = glob(f"{archieve_dpath}/DEMsProducts/EDEMx/TILES/comprexn/*/EDEM_AUXFILES/*HEM.tif")
+    ds["edem_edm"] = glob(f"{archieve_dpath}/DEMsProducts/EDEMx/TILES/comprexn/*/EDEM_AUXFILES/*EDM.tif")
     print_file_length(ds,"edem_wgs")
     print_file_length(ds,"edem_egm")
     print_file_length(ds,"edem_lcm")
@@ -76,11 +76,11 @@ def loadfiles_byvariable(archieve_dpath, outdir):
     print_file_length(ds,"edem_edm")
 
 
-    ds["wsfbh"] = [f"{archieve_dpath}/WSF3D/data/WSFBH/WSF3D_V02_BuildingHeight.tif"]
-    ds["pdem"] = [f"{archieve_dpath}/PBAND_DTM/RNG/NegroAOITDX08.tif"]
-    ds["egm08"] = [f"{archieve_dpath}/GEOID/GLOBAL/us_nga_egm2008_1.tif"]
-    ds["etchm"] = glob(f"{archieve_dpath}/ETH_CHM/data/*/*/*.tif")
-    ds["esawc"] = glob(f"{archieve_dpath}/ESAWC/data/v200/2021/map_tiled/*/*.tif")
+    ds["wsfbh"] = [f"{archieve_dpath}/AUXsProducts/WSF3D/data/WSFBH/WSF3D_V02_BuildingHeight.tif"]
+    ds["pdem"] = [f"{archieve_dpath}/TargetProducts/PBAND_DTM/RNG/NegroAOITDX08.tif"]
+    ds["egm08"] = [f"{archieve_dpath}/AUXsProducts/GEOID/GLOBAL/us_nga_egm2008_1.tif"]
+    ds["etchm"] = glob(f"{archieve_dpath}/AUXsProducts/ETH_CHM/data/*/*/*.tif")
+    ds["esawc"] = glob(f"{archieve_dpath}/AUXsProducts/ESAWC/data/v200/2021/map_tiled/*/*.tif")
     
 
     print_file_length(ds,"wsfbh")
@@ -90,27 +90,27 @@ def loadfiles_byvariable(archieve_dpath, outdir):
     print_file_length(ds,"etchm") 
      
 
-    ds["gedi_dtm"] = [f"{archieve_dpath}/GEDI/GRID/comprexn/GEDI_L3_be/GEDI03_elev_lowestmode_mean_2019108_2022019_002_03_EPSG4326.tif"]
-    ds["gedi_dsm"] = [f"{archieve_dpath}/GEDI/GRID/comprexn/GEDI_L3_vh/GEDI03_rh100_mean_2019108_2022019_002_03_EPSG4326.tif"]
-    ds["cdem_wbm"] = glob(f"{archieve_dpath}/CDEM/WBM/wbm_auto/*/*/*WBM.tif")
+    ds["gedi_dtm"] = [f"{archieve_dpath}/TargetProducts/GEDI/GRID/comprexn/GEDI_L3_be/GEDI03_elev_lowestmode_mean_2019108_2022019_002_03_EPSG4326.tif"]
+    ds["gedi_dsm"] = [f"{archieve_dpath}/TargetProducts/GEDI/GRID/comprexn/GEDI_L3_vh/GEDI03_rh100_mean_2019108_2022019_002_03_EPSG4326.tif"]
+    ds["cdem_wbm"] = glob(f"{archieve_dpath}/DEMsProducts/CDEM/WBM/wbm_auto/*/*/*WBM.tif")
     print_file_length(ds,"gedi_dtm")
     print_file_length(ds,"gedi_dsm")
     print_file_length(ds,"cdem_wbm")
                         
-    ds["ldem"] = glob(f"{archieve_dpath}/LIDAR_DTM/reproj/*.tif"); # fix heeterogeous stuff AMZ
+    ds["ldem"] = glob(f"{archieve_dpath}/TargetProducts/LIDAR_DTM/reproj/*.tif"); # fix heeterogeous stuff AMZ
 
-    ds["s2"] = glob(f"{archieve_dpath}/S2/comprexn/*/*.tif") 
-    ds["s1"] = glob(f"{archieve_dpath}/S1/comprexn/*/*.tif")
+    ds["s2"] = glob(f"{archieve_dpath}/AUXsProducts/S2/comprexn/*/*.tif") 
+    ds["s1"] = glob(f"{archieve_dpath}/AUXsProducts/S1/comprexn/*/*.tif")
     print_file_length(ds,"ldem")
     print_file_length(ds,"s2")
     print_file_length(ds,"s1")
     # glob(f"{archieve_dpath}/S1/comprexn/*/*.tif")[0]
 
-    ds["lgeoid"] = glob(f"{archieve_dpath}/GEOID/ROI/REPROJ/*.tif") # reproject this first to epsg 4326
+    ds["lgeoid"] = glob(f"{archieve_dpath}/AUXsProducts/GEOID/ROI/REPROJ/*.tif") # reproject this first to epsg 4326
     print_file_length(ds,"lgeoid")
 
-    ds["fbchm"] = glob(f"{archieve_dpath}/FB_CHM/RESAMPLE/sorted_files/*/*maskednearest.tif") # only mekong for now
-    ds["fbcha"] = glob(f"{archieve_dpath}/FB_CHM/RESAMPLE/sorted_files/*/*nearest.tif")
+    ds["fbchm"] = glob(f"{archieve_dpath}/AUXsProducts/FB_CHM/RESAMPLE/sorted_files/*/*maskednearest.tif") # only mekong for now
+    ds["fbcha"] = glob(f"{archieve_dpath}/AUXsProducts/FB_CHM/RESAMPLE/sorted_files/*/*nearest.tif")
     print_file_length(ds,"fbchm")
     print_file_length(ds,"fbcha")
 
