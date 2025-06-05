@@ -3,19 +3,22 @@ import rasterio
 import numpy as np
 from scipy import ndimage
 
-def dem_remove_badpixels(tdem_fn,hem_fn, esa_fn,com_fn,fo):
+def dem_remove_badpixels(tdem_fn,hem_fn, esa_fn,com_fn,fo,hem_thr=0.5):
     dem_data = read_dem(tdem_fn)
     hem = rload(hem_fn) #
     esa = rload(esa_fn)
     com = rload(com_fn) 
-    fom = fo.replace(".tif", "_ma.tif")
-    if os.path.isfile(fo):
+    smax_err_multi = str(hem_thr).replace(".", "p")
+    fom = fo.replace(".tif", f"_{smax_err_multi}_msk.tif")
+    foo = fo.replace(".tif", f"_{smax_err_multi}_gap.tif")
+
+    if os.path.isfile(foo):
         print("file already created \n{fo}")
-        return fo, fom 
+        return foo, fom 
 
     print("# Apply height error mask")
     mask = get_null_mask(dem_data) #
-    max_err_multi = 0.5#1#1.5#2#1.5#1.5
+    max_err_multi = hem_thr#0.5#1#1.5#2#1.5#1.5
     n_iter = 1
     print_unique_values(mask, verbose=True)
     save_raster("mask.tif", mask.astype("uint8"), tdem_fn)
@@ -39,16 +42,17 @@ def dem_remove_badpixels(tdem_fn,hem_fn, esa_fn,com_fn,fo):
     mask = ndimage.binary_dilation(mask, iterations=n_iter)
     mask = ndimage.binary_erosion(mask, iterations=n_iter)
 
-    save_raster(fom, mask.astype("uint8"), tdem_fn)
+    save_raster(fom, mask.astype("uint8"), tdem_fn) ##@this is too big should be just a mask 
 
     # mask has True and False, and i want to correct the code below
     # Apply Mask to DEM: Replace masked values with np.nan or -9999
     filtered_dem = np.where(mask, np.nan, dem_data)  # Use np.nan for float-type DEM
     # filtered_dem = np.where(mask, -9999, dem_data)  # Use -9999 for integer-type DEM
 
+    
     # Save the filtered DEM to a new raster file
-    save_raster(fo, filtered_dem, tdem_fn)
-    return fo, fom 
+    save_raster(foo, filtered_dem, tdem_fn)
+    return foo, fom 
 
 def rload(dem_path):
     with rasterio.open(dem_path) as src:
