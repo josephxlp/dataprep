@@ -97,10 +97,10 @@ def loadfiles_byvariable(archieve_dpath, outdir):
     print_file_length(ds,"gedi_dsm")
     print_file_length(ds,"cdem_wbm")
                         
-    ds["ldem"] = glob(f"{archieve_dpath}/TargetProducts/LIDAR_DTM/reproj/*.tif"); # fix heeterogeous stuff AMZ
+    ds["ldem"] = glob(f"{archieve_dpath}/LIDAR_DTM/reproj/*.tif"); # fix heeterogeous stuff AMZ
 
-    ds["s2"] = glob(f"{archieve_dpath}/AUXsProducts/S2/comprexn/*/*.tif") 
-    ds["s1"] = glob(f"{archieve_dpath}/AUXsProducts/S1/comprexn/*/*.tif")
+    ds["s2"] = glob(f"{archieve_dpath}/S2/comprexn/*/*.tif") 
+    ds["s1"] = glob(f"{archieve_dpath}/S1/comprexn/*/*.tif")
     print_file_length(ds,"ldem")
     print_file_length(ds,"s2")
     print_file_length(ds,"s1")
