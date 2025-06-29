@@ -7,11 +7,12 @@ from dataprep.rutils import read_yaml
 
 #hem_thr = 0.001#0.2#0.5#0.7#1#1.2#1.5#2  # Threshold for HEM processing, can be adjusted as needed
 #[6,7,8,9,10,11,12]:#[0.001, 0.2, 0.5, 0.7, 1, 1.2, 1.5, 2,2.5,3,3.5,4,4.5,5]:
+#[3,6]
 if __name__ == "__main__":
     ta = time.perf_counter()
   
 
-    for hem_thr in [6]:
+    for hem_thr in [3]:
         ti = time.perf_counter()
         print(files_byvariable_fn)
         print(vars_name_path_fn)
