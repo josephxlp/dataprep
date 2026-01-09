@@ -2,14 +2,9 @@ import os
 import subprocess
 import numpy as np
 import rasterio
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler,StandardScaler
 from osgeo import gdal
-
-
-import rasterio
-import numpy as np
-import os
-from sklearn.preprocessing import MinMaxScaler, StandardScaler
+ 
 
 def scale_raster(input_raster, output_raster,method="minmax"):
     #output_raster = input_raster.replace('.tif', 'X.tif')

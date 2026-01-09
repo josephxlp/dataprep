@@ -97,10 +97,13 @@ def loadfiles_byvariable(archieve_dpath, outdir):
     print_file_length(ds,"gedi_dsm")
     print_file_length(ds,"cdem_wbm")
                         
-    ds["ldem"] = glob(f"{archieve_dpath}/LIDAR_DTM/reproj/*.tif"); # fix heeterogeous stuff AMZ
+    #ds["ldem"] = glob(f"{archieve_dpath}/LIDAR_DTM/reproj/*.tif"); # fix heeterogeous stuff AMZ
+    ds["ldem"] = glob("/media/ljp238/12TBWolf/ARXIV1/TargetProducts/LIDAR_DTM/reproj4749/*.tif")
 
-    ds["s2"] = glob(f"{archieve_dpath}/S2/comprexn/*/*.tif") 
-    ds["s1"] = glob(f"{archieve_dpath}/S1/comprexn/*/*.tif")
+    ds["s2"] = glob("/media/ljp238/12TBWolf/ARXIV1/AUXsProducts/S2/comprexn/*/*.tif")
+    #glob(f"{archieve_dpath}/S2/comprexn/*/*.tif") 
+    ds["s1"] = glob("/media/ljp238/12TBWolf/ARXIV1/AUXsProducts/S1/comprexn/*/*.tif")
+    #glob(f"{archieve_dpath}/S1/comprexn/*/*.tif")
     print_file_length(ds,"ldem")
     print_file_length(ds,"s2")
     print_file_length(ds,"s1")
@@ -113,6 +116,9 @@ def loadfiles_byvariable(archieve_dpath, outdir):
     ds["fbcha"] = glob(f"{archieve_dpath}/AUXsProducts/FB_CHM/RESAMPLE/sorted_files/*/*nearest.tif")
     print_file_length(ds,"fbchm")
     print_file_length(ds,"fbcha")
+
+    ds["ctrees"] = glob("/media/ljp238/12TDX/PauloDataCTrees/data/v1/*.tif")
+    print_file_length(ds,"ctrees")
 
     yaml_filename = join(outdir,"loadfiles_byvariable.yaml")
     save_yaml(data=ds, file_path=yaml_filename)
