@@ -2,7 +2,10 @@ import os
 import time
 from multiprocessing import Pool
 from dataprep.wa_vrts import loadfiles_byvariable, save_yaml, create_vrt_file, create_text_file
-from config.uvars import archieve_dpath, outdir
+#from config.uvars import archieve_dpath, outdir
+
+archieve_dpath = "/media/ljp238/12TBWolf/ARXIV1"
+outdir = "/media/ljp238/12TBWolf/ARXIV1/TEST_VRTs/"
 
 def process_key(key_files):
     key, files = key_files
